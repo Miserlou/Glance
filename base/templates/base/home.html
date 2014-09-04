@@ -1,0 +1,272 @@
+{% extends "_layouts/base.html" %}
+
+{% block css %}
+{{block.super}}
+<style>
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 1px;
+  padding-bottom: 20px;
+}
+</style>
+{% endblock css %}
+
+{% block page_title %}Glance{% endblock %}
+{% block page_class %}home-page{% endblock %}
+{% block content %}
+
+
+<!-- Docs page layout -->
+    <div class="bs-docs-header" id="content">
+      <div class="container">
+        <h1>Glance</h1>
+        <p>Good reads, extremely fucking fast.</p>
+
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+
+      <div class="row">
+        <div class="col-md-9" role="main">
+
+<div class="bs-docs-section">
+  <h1 id="js-mostread" class="page-header">Most Read</h1>
+  <div id="mostread">
+
+  </div>
+
+</div>
+
+<div class="bs-docs-section">
+  <h1 id="recent" class="page-header">Recent</h1>
+</div>
+
+<div class="bs-docs-section">
+  <h1 id="js-news" class="page-header">News</h1>
+  <div id="news">
+
+  </div>
+
+</div>
+
+<div class="bs-docs-section">
+  <h1 id="commentary" class="page-header">Commentary</h1>
+  <h3>Article Title</h3>
+</div>
+
+<div class="bs-docs-section">
+  <h1 id="fiction" class="page-header">Fiction</h1>
+  <h3>Article Title</h3>
+</div>
+
+<div class="bs-docs-section">
+  <h1 id="classics" class="page-header">Classics</h1>
+  <h3>Article Title</h3>
+</div>
+
+<div class="bs-docs-section">
+  <h1 id="hn" class="page-header">HN</h1>
+  <h3>Article Title</h3>
+</div>
+
+<div class="bs-docs-section">
+  <h1 id="truereddit" class="page-header">TrueReddit</h1>
+  <h3>Article Title</h3>
+</div>
+
+
+</div>
+
+        <div class="col-md-3">
+          <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+            <ul class="nav bs-docs-sidenav">
+
+                <li>
+  <a href="#js-mostread">Most Read</a>
+  <ul class="nav" id="mostread_nav">
+  </ul>
+</li>
+<li><a href="#recent">Recent</a></li>
+<li>
+  <ul class="nav" id="recentNav">
+  </ul>
+</li>
+<li>
+  <a href="#js-news">News</a>
+  <ul class="nav">
+  </ul>
+</li>
+<li>
+  <a href="#commentary">Commentary</a>
+  <ul class="nav">
+
+  </ul>
+</li>
+<li>
+  <a href="#fiction">Fiction</a>
+  <ul class="nav">
+
+  </ul>
+</li>
+<li>
+  <a href="#classics">Classics</a>
+  <ul class="nav">
+
+  </ul>
+</li>
+<li>
+  <a href="#hn">HN</a>
+  <ul class="nav">
+
+  </ul>
+</li>
+<li>
+  <a href="#truereddit">TrueReddit</a>
+  <ul class="nav">
+
+  </ul>
+</li>
+            </ul>
+            <a class="back-to-top" href="#top">
+              Back to top
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+<style>
+.bs-docs-masthead, .bs-docs-header{
+  background: url("../img/bs-docs-masthead-pattern.png") repeat scroll center center rgba(0, 0, 0, 0);
+  background-image: linear-gradient(to bottom, #2e2e2e 0px, #101010 100%);
+  color: #c90000;
+}
+
+.bs-docs-sidebar .nav > .active > a, .bs-docs-sidebar .nav > .active:hover > a, .bs-docs-sidebar .nav > .active:focus > a{
+  color: #c90000;
+  border-left: 2px solid #c90000;
+}
+
+a{
+  color: #c90000;
+}
+
+</style>
+
+{% verbatim %}
+<script id="link-template" type="text/x-handlebars-template">
+    <div class="page-header">
+      <h3 id="link-{{id}}"><a href="#">{{title}}</a></h3>
+    <p>
+      <i class="text-muted">{{url}}</i>
+    </p>
+    <p class="text-muted">
+      {{reads}} glances.
+    </p>
+    </div>
+</script>
+
+{% endverbatim %}
+
+
+{% endblock %}
+
+{% block post_scripts %}
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+    Parse.initialize("IKXOwtsEGwpJxjD56rloizwwsB4pijEve8nU5wkB", "90J0CYICpTBqvhCmqrQvBTo3XGjyWB5fv0FEHU1W");
+    var Article = Parse.Object.extend("Article");
+    var link_template_source   = $("#link-template").html();
+    var template = Handlebars.compile(link_template_source);
+
+    // Most Read
+    var query = new Parse.Query(Article);
+    query.descending("reads");
+    query.limit(25);
+    query.find({
+      success: function(results) {
+        // Do something with the returned Parse.Object values
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var me = {url: object.get('url'), title: object.get('title'), reads: object.get('reads'), id: object.get('objectId'), test: "test"};
+          var html    = template(me);
+          $('#mostread').append(html);
+        }
+      },
+      error: function(error) {
+        //alert("Error: " + error.code + " " + error.message);
+      }
+    });
+
+    YUI({ filter:'raw' }).use("io-xdr", "json-parse", "node",
+        function(Y) {
+
+            //Event handler called when the transaction begins:
+            var handleStart = function(id, a) {
+                Y.log("io:start firing.", "info", "example");
+            }
+
+            //Event handler for the success event -- use this handler to write the fetched
+            //RSS items to the page.
+            var handleSuccess = function(id, o, a) {
+
+                //We use JSON.parse to sanitize the JSON (as opposed to simply performing an
+                //JavaScript eval of the data):
+                var oRSS = Y.JSON.parse(o.responseText);
+
+                //From here, we simply access the JSON data from where it's provided
+                //in the Yahoo! Pipes output:
+                if (oRSS && oRSS.count) {
+
+                    for (var i=0; i<oRSS.count; i++) {
+                        var me = {url: oRSS.value.items[i]['link'], title: oRSS.value.items[i]['title']};
+                        var html    = template(me);
+                        $('#news').append(html);
+                    }
+                } else {
+                }
+            }
+
+            //In the event that the HTTP status returned does not resolve to,
+            //HTTP 2xx, a failure is reported and this function is called:
+            var handleFailure = function(id, o, a) {
+                Y.log("ERROR " + id + " " + a, "info", "example");
+            }
+
+            //With all the apparatus in place, we can now configure our
+            //IO call.  The method property is defined, but if omitted,
+            //IO will default to HTTP GET.
+            var cfg = {
+                method: "GET",
+                xdr: {
+                    use:'native'
+                },
+                on: {
+                    //Our event handlers previously defined:
+                    start: handleStart,
+                    success: handleSuccess,
+                    failure: handleFailure
+                }
+            };
+
+            var loadPipe = function(pipe) {
+                console.log("Loading pipe..")
+                var obj = Y.io(
+                    //this is a specific Pipes feed, populated with cycling news:
+                    pipe,
+                    cfg
+                );
+            }
+
+            loadPipe("http://pipes.yahooapis.com/pipes/pipe.run?_id=giWz8Vc33BG6rQEQo_NLYQ&_render=json");
+        }
+    );
+
+});
+</script>
+
+{% endblock %}
