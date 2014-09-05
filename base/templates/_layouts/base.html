@@ -113,11 +113,15 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
   {% endblock cdn_js %}
 
+
+<link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
   <!-- scripts concatenated and minified via django-compressor -->
   {% compress js %}
   {% block js %}
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/docs.js' %}"></script>
+  <script src="{% static 'js/glance.js' %}"></script>
   {% endblock js %}
   {% endcompress %}
   <!-- end scripts -->

@@ -28,7 +28,54 @@ body {
     <div class="container bs-docs-container">
 
       <div class="row">
-        <div class="col-md-9" role="main">
+<div class="col-md-9" role="glanceer">
+
+
+<link href='https://rawgithub.com/Miserlou/Glance/master/style.css' rel='stylesheet' type='text/css'>        
+
+<div id="glance_holder">
+        <div id="glance_container">
+
+            <div id="guide_top">
+――――――――――<span id="notch">&#1092;</span>―――――――――――
+            </div>
+
+            <div id="glance_result">
+                Choose a WPM to start.
+            </div>
+
+            <div id="guide_bottom">
+――――――――――――――――――――――
+            </div>
+
+            <select id="glance_selector">
+              <option value="0">Select WPM</option>
+              <option value="200">200wpm</option>
+              <option value="300">300wpm</option>
+              <option value="350">350wpm</option>
+              <option value="400">400wpm</option>
+              <option value="450">450wpm</option>
+              <option value="500">500wpm</option>
+              <option value="550">550wpm</option>
+              <option value="600">600wpm</option>
+              <option value="650">650wpm</option>
+              <option value="700">700wpm</option>
+              <option value="750">750wpm</option>
+              <option value="800">800wpm</option>
+              <option value="850">850wpm</option>
+              <option value="900">900wpm</option>
+              <option value="950">950wpm</option>
+            </select>
+
+            <button type="button" id="glance_toggle">Pause</button>
+
+    </div>
+</div>
+
+
+</div><!-- end glanceer -->
+
+<div class="col-md-9" role="main">
 
 <div class="bs-docs-section">
   <h1 id="js-mostread" class="page-header">Most Read</h1>
@@ -43,7 +90,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-news" class="page-header">News</h1>
+  <h1 id="js-news" class="page-header">News <small>what they tell ya</small></h1>
   <div id="news">
 
   </div>
@@ -51,7 +98,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-commentary" class="page-header">Commentary</h1>
+  <h1 id="js-commentary" class="page-header">Commentary <small>talking heads</small></h1>
 
   <div id="commentary">
 
@@ -60,7 +107,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-fiction" class="page-header">Fiction</h1>
+  <h1 id="js-fiction" class="page-header">Fiction <small>suggestions welcome</small></h1>
 
   <div id="fiction">
 
@@ -69,7 +116,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-classics" class="page-header">Classics <small>Coming soon!</small></h1>
+  <h1 id="js-classics" class="page-header">Classics <small>coming soon!</small></h1>
   <div id="classics">
 
   </div>
@@ -77,7 +124,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-hn" class="page-header">HN</h1>
+  <h1 id="js-hn" class="page-header">HN <small>capitalism is a death machine</small></h1>
 
   <div id="hn">
 
@@ -86,7 +133,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-truereddit" class="page-header">TrueReddit <small>Sometimes broken!</small></h1>
+  <h1 id="js-truereddit" class="page-header">TrueReddit <small><i>"Sometimes broken!"</i></small></h1>
 
   <div id="truereddit">
 
@@ -179,12 +226,152 @@ h1, .h1 {
     font-size: 48px;
 }
 
+.glance_result{
+  font-size: 48px;
+  margin-top: 120px;
+  margin-bottom: 120px;
+  text-align: center;
+  font-family: 'Droid Sans Mono', sans-serif;
+}
+
+.glance_holder{
+    font-family: 'Droid Sans Mono', sans-serif;
+    width: 100%;
+}
+
+.glance_spacer{
+    width: 100%;
+    /* 600px+; small tablet portrait */
+    min-height: 210px;
+}
+
+.glance_container{
+    background-color: #ffffff;
+    /* 600px+; small tablet portrait */
+    width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 43px;
+}
+
+.glance_result{
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    /* 600px+; small tablet portrait */
+    padding-top: 9px;
+    padding-bottom: 9px;
+    min-height: 40px;
+    font-size: 32px;
+}
+
+.guide_top, .guide_bottom{
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #dddddd;
+    /* 600px+; small tablet portrait */
+    font-size: 32px;
+}
+
+.notch{
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #dddddd;    
+    /* 600px+; small tablet portrait */
+    margin-top: 9px;
+    padding-top: 12px;
+    font-size: 32px;
+}
+
+#glance_credits{
+    float: right;
+    font-family: 'Droid Sans Mono', sans-serif;
+    /* 600px+; small tablet portrait */
+    font-size: 13px;
+}
+
+#glance_credits a{
+    color: #dddddd;
+    text-decoration: none;
+}
+
+#glance_selector, #glance_toggle{
+    float: left;
+    width: auto;
+}
+
+.invisible{
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #ffffff;
+    position: static;
+}
+
+.start, .pivot, .end, .glance_start, .glance_pivot, .glance_end{
+    color: #333333;
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    /* 600px+; small tablet portrait */
+    font-size: 32px;
+}
+.pivot, .glance_pivot{
+    color: #de0000;
+}
+
+@media (max-width: 599px) {
+
+    #glance_holder{
+        width: 320
+        padding-top: 4px;
+        padding-bottom: 6px;
+        margin-bottom: 6px;
+        min-height: 70px;
+    }
+
+    #glance_spacer{
+        min-height: 105px;
+    }
+
+    #glance_container{
+        width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 22px;
+    }
+
+    #glance_result{
+        min-height: 22px;
+        font-size: 22px;
+        padding-top: 11px;
+        padding-bottom: 6px;
+    }
+
+    #guide_top, #guide_bottom{
+        font-size: 22px;
+    }
+
+    #notch{
+        margin-top: 6px;
+        padding-top: 8px;
+        font-size: 22px;
+    }
+
+    #glance_credits{
+        font-size: 10px;
+    }
+
+    .start, .pivot, .end, .glance_start, .glance_pivot, .glance_end{
+        font-size: 22px;
+    }
+
+}
+
 </style>
 
 {% verbatim %}
 <script id="link-template" type="text/x-handlebars-template">
+
+<div id="{{id}}">
     <div class="page-header">
-      <h3 id="link-{{id}}"><a href="#">{{title}}</a></h3>
+      <h3 id="link-{{id}}"><a href="#" onclick="glanceifyURL('{{url}}'); return false;">{{title}}</a></h3>
     <p style="max-width: 100%; word-wrap:break-word;">
       <i class="text-muted">{{url}}</i>
     </p>
@@ -194,6 +381,28 @@ h1, .h1 {
     </p>
     {{/if}}
     </div>
+</div>
+
+<div id="glance_result-{{id}}-holder" class="glance_result" style="display: none;">
+
+<div class="glance_holder">
+
+            <div class="guide_top">
+――――――――――<span id="notch">&#1092;</span>―――――――――――
+            </div>
+
+<div id="glance_result-{{id}}">
+Loading..
+</div>
+
+            <div class="guide_bottom">
+――――――――――――――――――――――
+            </div>
+
+</div>
+
+</div>
+
 </script>
 
 {% endverbatim %}
@@ -211,7 +420,7 @@ h1, .h1 {
     var link_template_source   = $("#link-template").html();
     var template = Handlebars.compile(link_template_source);
 
-    // Most Read
+    // Parse feeds
     var query = new Parse.Query(Article);
     query.descending("reads");
     query.limit(25);
@@ -223,7 +432,10 @@ h1, .h1 {
         // Do something with the returned Parse.Object values
         for (var i = 0; i < results.length; i++) {
           var object = results[i];
-          var me = {url: object.get('url'), title: object.get('title'), reads: object.get('reads'), id: object.get('objectId'), test: "test"};
+
+          var id = convertToSlug(object.get('url'));
+
+          var me = {url: object.get('url'), title: object.get('title'), reads: object.get('reads'), id: id, test: "test"};
           var html    = template(me);
           $('#mostread').append(html);
         }
@@ -233,6 +445,7 @@ h1, .h1 {
       }
     });
 
+    // Y!Pipes feeds
     YUI({ filter:'raw' }).use("io-xdr", "json-parse", "node",
         function(Y) {
 
@@ -253,7 +466,8 @@ h1, .h1 {
                 if (oRSS && oRSS.count) {
 
                     for (var i=0; i<oRSS.count; i++) {
-                        var me = {url: oRSS.value.items[i]['link'], title: oRSS.value.items[i]['title']};
+                        var id = convertToSlug(oRSS.value.items[i]['link']);
+                        var me = {url: oRSS.value.items[i]['link'], title: oRSS.value.items[i]['title'], id: id};
                         var html    = template(me);
                         $('#' + a['feedtype']).append(html);
                     }
@@ -304,6 +518,23 @@ h1, .h1 {
     );
 
 });
+
+function convertToSlug(Text)
+{
+    return Text
+        .toLowerCase()
+        .replace(/[^\w ]+/g,'')
+        .replace(/ +/g,'-')
+        ;
+}
+</script>
+
+<script>
+
+function glancify(url){
+  alert(url);
+}
+
 </script>
 
 {% endblock %}

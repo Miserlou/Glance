@@ -1,0 +1,144 @@
+body{
+    margin: 0px;
+}
+
+#spritz_holder{
+
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999999999999;
+    /* 600px+; small tablet portrait */
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    min-height: 166px;
+}
+
+#spritz_spacer{
+    width: 100%;
+    /* 600px+; small tablet portrait */
+    min-height: 210px;
+}
+
+#spritz_container{
+    background-color: #ffffff;
+    /* 600px+; small tablet portrait */
+    width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 43px;
+}
+
+#spritz_result{
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    /* 600px+; small tablet portrait */
+    padding-top: 9px;
+    padding-bottom: 9px;
+    min-height: 40px;
+    font-size: 32px;
+}
+
+#guide_top, #guide_bottom{
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #dddddd;
+    /* 600px+; small tablet portrait */
+    font-size: 32px;
+}
+
+#notch{
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #dddddd;    
+    /* 600px+; small tablet portrait */
+    margin-top: 9px;
+    padding-top: 12px;
+    font-size: 32px;
+}
+
+#spritz_credits{
+    float: right;
+    font-family: 'Droid Sans Mono', sans-serif;
+    /* 600px+; small tablet portrait */
+    font-size: 13px;
+}
+
+#spritz_credits a{
+    color: #dddddd;
+    text-decoration: none;
+}
+
+#spritz_selector, #spritz_toggle{
+    float: left;
+    width: auto;
+}
+
+.invisible{
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #ffffff;
+    position: static;
+}
+
+.start, .pivot, .end, .spritz_start, .spritz_pivot, .spritz_end{
+    color: #333333;
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    /* 600px+; small tablet portrait */
+    font-size: 32px;
+}
+.pivot, .spritz_pivot{
+    color: #de0000;
+}
+
+@media (max-width: 599px) {
+
+    #spritz_holder{
+        width: 320
+        padding-top: 4px;
+        padding-bottom: 6px;
+        margin-bottom: 6px;
+        min-height: 70px;
+    }
+
+    #spritz_spacer{
+        min-height: 105px;
+    }
+
+    #spritz_container{
+        width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 22px;
+    }
+
+    #spritz_result{
+        min-height: 22px;
+        font-size: 22px;
+        padding-top: 11px;
+        padding-bottom: 6px;
+    }
+
+    #guide_top, #guide_bottom{
+        font-size: 22px;
+    }
+
+    #notch{
+        margin-top: 6px;
+        padding-top: 8px;
+        font-size: 22px;
+    }
+
+    #spritz_credits{
+        font-size: 10px;
+    }
+
+    .start, .pivot, .end, .spritz_start, .spritz_pivot, .spritz_end{
+        font-size: 22px;
+    }
+
+}
