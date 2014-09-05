@@ -33,46 +33,6 @@ body {
 
 <link href='https://rawgithub.com/Miserlou/Glance/master/style.css' rel='stylesheet' type='text/css'>        
 
-<div id="glance_holder">
-        <div id="glance_container">
-
-            <div id="guide_top">
-――――――――――<span id="notch">&#1092;</span>―――――――――――
-            </div>
-
-            <div id="glance_result">
-                Choose a WPM to start.
-            </div>
-
-            <div id="guide_bottom">
-――――――――――――――――――――――
-            </div>
-
-            <select id="glance_selector">
-              <option value="0">Select WPM</option>
-              <option value="200">200wpm</option>
-              <option value="300">300wpm</option>
-              <option value="350">350wpm</option>
-              <option value="400">400wpm</option>
-              <option value="450">450wpm</option>
-              <option value="500">500wpm</option>
-              <option value="550">550wpm</option>
-              <option value="600">600wpm</option>
-              <option value="650">650wpm</option>
-              <option value="700">700wpm</option>
-              <option value="750">750wpm</option>
-              <option value="800">800wpm</option>
-              <option value="850">850wpm</option>
-              <option value="900">900wpm</option>
-              <option value="950">950wpm</option>
-            </select>
-
-            <button type="button" id="glance_toggle">Pause</button>
-
-    </div>
-</div>
-
-
 </div><!-- end glanceer -->
 
 <div class="col-md-9" role="main">
@@ -201,6 +161,33 @@ body {
               Back to top
             </a>
 
+            <br />
+
+            <p class="back-to-top">
+
+            <select id="glance_selector" class="form-control">
+              <option value="200">200wpm</option>
+              <option value="300">300wpm</option>
+              <option value="350">350wpm</option>
+              <option value="400">400wpm</option>
+              <option value="450" selected>450wpm</option>
+              <option value="500">500wpm</option>
+              <option value="550">550wpm</option>
+              <option value="600">600wpm</option>
+              <option value="650">650wpm</option>
+              <option value="700">700wpm</option>
+              <option value="750">750wpm</option>
+              <option value="800">800wpm</option>
+              <option value="850">850wpm</option>
+              <option value="900">900wpm</option>
+              <option value="950">950wpm</option>
+            </select>
+
+            <button type="button" id="glance_toggle" class="hide">Pause</button>
+
+          </p>
+
+
           </div>
         </div>
       </div>
@@ -228,8 +215,8 @@ h1, .h1 {
 
 .glance_result{
   font-size: 48px;
-  margin-top: 120px;
-  margin-bottom: 120px;
+  margin-top: 180px;
+  margin-bottom: 180px;
   text-align: center;
   font-family: 'Droid Sans Mono', sans-serif;
 }
@@ -266,10 +253,10 @@ h1, .h1 {
 
 .guide_top, .guide_bottom{
     text-align: center;
-    font-family: 'Droid Sans Mono', sans-serif;
+    font-family: 'Arial', sans-serif;
     color: #dddddd;
     /* 600px+; small tablet portrait */
-    font-size: 32px;
+    font-size: 22px;
 }
 
 .notch{
@@ -295,7 +282,6 @@ h1, .h1 {
 }
 
 #glance_selector, #glance_toggle{
-    float: left;
     width: auto;
 }
 
@@ -318,7 +304,7 @@ h1, .h1 {
 
 @media (max-width: 599px) {
 
-    #glance_holder{
+    .glance_holder{
         width: 320
         padding-top: 4px;
         padding-bottom: 6px;
@@ -330,28 +316,28 @@ h1, .h1 {
         min-height: 105px;
     }
 
-    #glance_container{
+    .glance_container{
         width: 320px;
         margin-left: auto;
         margin-right: auto;
         line-height: 22px;
     }
 
-    #glance_result{
+    .glance_result{
         min-height: 22px;
         font-size: 22px;
-        padding-top: 11px;
-        padding-bottom: 6px;
+        padding-top: 24px;
+        padding-bottom: 24px;
     }
 
-    #guide_top, #guide_bottom{
-        font-size: 22px;
+    .guide_top, .guide_bottom{
+        font-size: 12px;
     }
 
-    #notch{
+    .notch{
         margin-top: 6px;
         padding-top: 8px;
-        font-size: 22px;
+        font-size: 12px;
     }
 
     #glance_credits{

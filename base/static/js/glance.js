@@ -34,8 +34,7 @@ function glance(){
 // The meat!
 function glanceify(input, url){
 
-    //var wpm = parseInt(document.getElementById("glance_selector").value, 10);
-    var wpm = 750;
+    var wpm = parseInt(document.getElementById("glance_selector").value, 10);
     var ms_per_word = 60000/wpm;
 
     // Split on any spaces.
