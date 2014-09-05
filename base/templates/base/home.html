@@ -5,7 +5,7 @@
 <style>
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 1px;
+  padding-top: 0px;
   padding-bottom: 20px;
 }
 </style>
@@ -39,7 +39,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="recent" class="page-header">Recent</h1>
+  <h1 id="js-recent" class="page-header">Recent</h1>
 </div>
 
 <div class="bs-docs-section">
@@ -51,28 +51,47 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="commentary" class="page-header">Commentary</h1>
-  <h3>Article Title</h3>
+  <h1 id="js-commentary" class="page-header">Commentary</h1>
+
+  <div id="commentary">
+
+  </div>
+
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="fiction" class="page-header">Fiction</h1>
-  <h3>Article Title</h3>
+  <h1 id="js-fiction" class="page-header">Fiction</h1>
+
+  <div id="fiction">
+
+  </div>
+
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="classics" class="page-header">Classics</h1>
-  <h3>Article Title</h3>
+  <h1 id="js-classics" class="page-header">Classics <small>Coming soon!</small></h1>
+  <div id="classics">
+
+  </div>
+
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="hn" class="page-header">HN</h1>
-  <h3>Article Title</h3>
+  <h1 id="js-hn" class="page-header">HN</h1>
+
+  <div id="hn">
+
+  </div>
+
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="truereddit" class="page-header">TrueReddit</h1>
-  <h3>Article Title</h3>
+  <h1 id="js-truereddit" class="page-header">TrueReddit <small>Sometimes broken!</small></h1>
+
+  <div id="truereddit">
+
+  </div>
+
 </div>
 
 
@@ -82,47 +101,50 @@ body {
           <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
             <ul class="nav bs-docs-sidenav">
 
-                <li>
+<li>
   <a href="#js-mostread">Most Read</a>
   <ul class="nav" id="mostread_nav">
+
   </ul>
 </li>
-<li><a href="#recent">Recent</a></li>
 <li>
-  <ul class="nav" id="recentNav">
+  <a href="#js-recent">Recent</a>
+  <ul class="nav">
   </ul>
 </li>
 <li>
   <a href="#js-news">News</a>
-  <ul class="nav">
-  </ul>
-</li>
-<li>
-  <a href="#commentary">Commentary</a>
+
   <ul class="nav">
 
   </ul>
 </li>
 <li>
-  <a href="#fiction">Fiction</a>
+  <a href="#js-commentary">Commentary</a>
   <ul class="nav">
 
   </ul>
 </li>
 <li>
-  <a href="#classics">Classics</a>
+  <a href="#js-fiction">Fiction</a>
   <ul class="nav">
 
   </ul>
 </li>
 <li>
-  <a href="#hn">HN</a>
+  <a href="#js-classics">Classics</a>
   <ul class="nav">
 
   </ul>
 </li>
 <li>
-  <a href="#truereddit">TrueReddit</a>
+  <a href="#js-hn">HN</a>
+  <ul class="nav">
+
+  </ul>
+</li>
+<li>
+  <a href="#js-truereddit">TrueReddit</a>
   <ul class="nav">
 
   </ul>
@@ -139,18 +161,22 @@ body {
 
 <style>
 .bs-docs-masthead, .bs-docs-header{
-  background: url("../img/bs-docs-masthead-pattern.png") repeat scroll center center rgba(0, 0, 0, 0);
-  background-image: linear-gradient(to bottom, #2e2e2e 0px, #101010 100%);
-  color: #c90000;
+  background-image: url("https://raw.githubusercontent.com/eyy/strapboot/master/bootstrap-2.3.2/docs/assets/img/bs-docs-masthead-pattern.png"), linear-gradient(45deg, #000 0%,#666 100%);
+  color: #de0000;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
 }
 
 .bs-docs-sidebar .nav > .active > a, .bs-docs-sidebar .nav > .active:hover > a, .bs-docs-sidebar .nav > .active:focus > a{
-  color: #c90000;
-  border-left: 2px solid #c90000;
+  color: #de0000;
+  border-left: 2px solid #de0000;
 }
 
 a{
-  color: #c90000;
+  color: #222;
+}
+
+h1, .h1 {
+    font-size: 48px;
 }
 
 </style>
@@ -159,12 +185,14 @@ a{
 <script id="link-template" type="text/x-handlebars-template">
     <div class="page-header">
       <h3 id="link-{{id}}"><a href="#">{{title}}</a></h3>
-    <p>
+    <p style="max-width: 100%; word-wrap:break-word;">
       <i class="text-muted">{{url}}</i>
     </p>
+    {{#if reads}}
     <p class="text-muted">
       {{reads}} glances.
     </p>
+    {{/if}}
     </div>
 </script>
 
@@ -187,6 +215,9 @@ a{
     var query = new Parse.Query(Article);
     query.descending("reads");
     query.limit(25);
+    var d = new Date();
+    d.setDate(d.getDate() - 2);
+    query.greaterThan("createdAt", d);
     query.find({
       success: function(results) {
         // Do something with the returned Parse.Object values
@@ -198,7 +229,7 @@ a{
         }
       },
       error: function(error) {
-        //alert("Error: " + error.code + " " + error.message);
+        console.log("Error: " + error.code + " " + error.message);
       }
     });
 
@@ -207,7 +238,6 @@ a{
 
             //Event handler called when the transaction begins:
             var handleStart = function(id, a) {
-                Y.log("io:start firing.", "info", "example");
             }
 
             //Event handler for the success event -- use this handler to write the fetched
@@ -225,7 +255,7 @@ a{
                     for (var i=0; i<oRSS.count; i++) {
                         var me = {url: oRSS.value.items[i]['link'], title: oRSS.value.items[i]['title']};
                         var html    = template(me);
-                        $('#news').append(html);
+                        $('#' + a['feedtype']).append(html);
                     }
                 } else {
                 }
@@ -240,21 +270,24 @@ a{
             //With all the apparatus in place, we can now configure our
             //IO call.  The method property is defined, but if omitted,
             //IO will default to HTTP GET.
-            var cfg = {
-                method: "GET",
-                xdr: {
-                    use:'native'
-                },
-                on: {
-                    //Our event handlers previously defined:
-                    start: handleStart,
-                    success: handleSuccess,
-                    failure: handleFailure
-                }
-            };
 
-            var loadPipe = function(pipe) {
-                console.log("Loading pipe..")
+
+            var loadPipe = function(pipe, type) {
+
+              var cfg = {
+                  method: "GET",
+                  arguments: {feedtype: type},
+                  xdr: {
+                      use:'native'
+                  },
+                  on: {
+                      //Our event handlers previously defined:
+                      start: handleStart,
+                      success: handleSuccess,
+                      failure: handleFailure
+                  }
+              };
+
                 var obj = Y.io(
                     //this is a specific Pipes feed, populated with cycling news:
                     pipe,
@@ -262,7 +295,11 @@ a{
                 );
             }
 
-            loadPipe("http://pipes.yahooapis.com/pipes/pipe.run?_id=giWz8Vc33BG6rQEQo_NLYQ&_render=json");
+            loadPipe("http://pipes.yahoo.com/pipes/pipe.run?_id=40805955111ac2e85631facfb362f067&_render=json", "news");
+            loadPipe("http://pipes.yahoo.com/pipes/pipe.run?_id=dc1a399c275cbc0bcf6329c8419d6f4f&_render=json", "commentary");
+            loadPipe("http://pipes.yahoo.com/pipes/pipe.run?_id=ee8d2db2513114660b054cd82da29b69&_render=json", "fiction");
+            loadPipe("http://pipes.yahoo.com/pipes/pipe.run?_id=af38f38c0a21785ef8409d48ab4c1246&_render=json", "hn");
+            loadPipe("http://pipes.yahoo.com/pipes/pipe.run?_id=792a6a5fc2c23eafe6a80855263ac259&_render=json", "truereddit");
         }
     );
 
