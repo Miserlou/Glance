@@ -47,10 +47,15 @@ body {
 
 <div class="bs-docs-section">
   <h1 id="js-recent" class="page-header">Recent</h1>
+  <div id="recent">
+
+  </div>
+
+
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-news" class="page-header">News <small>what they tell ya</small></h1>
+  <h1 id="js-news" class="page-header">News <small>it's all bad</small></h1>
   <div id="news">
 
   </div>
@@ -84,7 +89,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-hn" class="page-header">HN <small>capitalism is a death machine</small></h1>
+  <h1 id="js-hn" class="page-header">HN <small>rich nerd fodder</small></h1>
 
   <div id="hn">
 
@@ -110,7 +115,7 @@ body {
 
 <li>
   <a href="#js-mostread">Most Read</a>
-  <ul class="nav" id="mostread_nav">
+  <ul class="nav">
 
   </ul>
 </li>
@@ -206,7 +211,7 @@ body {
 }
 
 a{
-  color: #222;
+  color: #fff;
 }
 
 h1, .h1 {
@@ -214,11 +219,7 @@ h1, .h1 {
 }
 
 .glance_result{
-  font-size: 48px;
-  margin-top: 180px;
-  margin-bottom: 180px;
-  text-align: center;
-  font-family: 'Droid Sans Mono', sans-serif;
+
 }
 
 .glance_holder{
@@ -302,6 +303,11 @@ h1, .h1 {
     color: #de0000;
 }
 
+.glance_main{
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
 @media (max-width: 599px) {
 
     .glance_holder{
@@ -369,21 +375,36 @@ h1, .h1 {
     </div>
 </div>
 
-<div id="glance_result-{{id}}-holder" class="glance_result" style="display: none;">
+<div id="glance_result-{{id}}-holder"  style="display: none;" >
+
+<div class="glance_result">
 
 <div class="glance_holder">
 
             <div class="guide_top">
-――――――――――<span id="notch">&#1092;</span>―――――――――――
+<span style="color: white;">――――――――――</span><span id="notch">▼</span><span style="color: white;">―――――――――――</span>
             </div>
 
-<div id="glance_result-{{id}}">
+<div id="glance_result-{{id}}" class="glance_main">
 Loading..
 </div>
 
-            <div class="guide_bottom">
-――――――――――――――――――――――
+            <div class="guide_top">
+<span style="color: white;">――――――――――</span><span id="notch">▲</span><span style="color: white;">―――――――――――</span>
             </div>
+
+</div>
+</div>
+
+<div>
+
+
+<div class="page-header">
+  <p style="max-width: 100%; word-wrap:break-word;">
+    <b>{{title}}</b><br />
+    <i class="text-muted">{{url}}</i>
+  </p>
+</div>
 
 </div>
 
