@@ -55,7 +55,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-news" class="page-header">News <small>it's all bad</small></h1>
+  <h1 id="js-news" class="page-header">News <small>mostly bad</small></h1>
   <div id="news">
 
   </div>
@@ -89,7 +89,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-hn" class="page-header">HN <small>rich nerd fodder</small></h1>
+  <h1 id="js-hn" class="page-header">HN <small>rich nerds</small></h1>
 
   <div id="hn">
 
@@ -162,8 +162,13 @@ body {
   </ul>
 </li>
             </ul>
+
             <a class="back-to-top" href="#top">
               Back to top
+            </a>
+
+            <a class="back-to-top" onclick="toggleLights(); return false;" href="#">
+              Toggle Lights
             </a>
 
             <br />
@@ -175,12 +180,12 @@ body {
               <option value="300">300wpm</option>
               <option value="350">350wpm</option>
               <option value="400">400wpm</option>
-              <option value="450" selected>450wpm</option>
+              <option value="450">450wpm</option>
               <option value="500">500wpm</option>
               <option value="550">550wpm</option>
               <option value="600">600wpm</option>
               <option value="650">650wpm</option>
-              <option value="700">700wpm</option>
+              <option value="700" selected>700wpm</option>
               <option value="750">750wpm</option>
               <option value="800">800wpm</option>
               <option value="850">850wpm</option>
@@ -210,10 +215,6 @@ body {
   border-left: 2px solid #de0000;
 }
 
-a{
-  color: #fff;
-}
-
 h1, .h1 {
     font-size: 48px;
 }
@@ -234,39 +235,17 @@ h1, .h1 {
 }
 
 .glance_container{
-    background-color: #ffffff;
     /* 600px+; small tablet portrait */
     width: 420px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 43px;
+    line-height: 36px;
 }
 
 .glance_result{
-    text-align: center;
+    text-align: left;
     font-family: 'Droid Sans Mono', sans-serif;
     /* 600px+; small tablet portrait */
-    padding-top: 9px;
-    padding-bottom: 9px;
-    min-height: 40px;
-    font-size: 32px;
-}
-
-.guide_top, .guide_bottom{
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    color: #dddddd;
-    /* 600px+; small tablet portrait */
-    font-size: 22px;
-}
-
-.notch{
-    text-align: center;
-    font-family: 'Droid Sans Mono', sans-serif;
-    color: #dddddd;    
-    /* 600px+; small tablet portrait */
-    margin-top: 9px;
-    padding-top: 12px;
     font-size: 32px;
 }
 
@@ -293,8 +272,6 @@ h1, .h1 {
 }
 
 .start, .pivot, .end, .glance_start, .glance_pivot, .glance_end{
-    color: #333333;
-    text-align: center;
     font-family: 'Droid Sans Mono', sans-serif;
     /* 600px+; small tablet portrait */
     font-size: 32px;
@@ -304,8 +281,8 @@ h1, .h1 {
 }
 
 .glance_main{
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 10px;
+  padding-bottom: 0px;
 }
 
 @media (max-width: 599px) {
@@ -382,7 +359,7 @@ h1, .h1 {
 <div class="glance_holder">
 
             <div class="guide_top">
-<span style="color: white;">――――――――――</span><span id="notch">▼</span><span style="color: white;">―――――――――――</span>
+<span>...</span><span class="notch">▼</span>
             </div>
 
 <div id="glance_result-{{id}}" class="glance_main">
@@ -390,7 +367,7 @@ Loading..
 </div>
 
             <div class="guide_top">
-<span style="color: white;">――――――――――</span><span id="notch">▲</span><span style="color: white;">―――――――――――</span>
+<span>...</span><span class="notch">▲</span>
             </div>
 
 </div>
@@ -399,9 +376,9 @@ Loading..
 <div>
 
 
-<div class="page-header">
+<div class="page-header" style="margin-top: 9px;">
   <p style="max-width: 100%; word-wrap:break-word;">
-    <b>{{title}}</b><br />
+    <b class="minititle">{{title}}</b><br />
     <i class="text-muted">{{url}}</i>
   </p>
 </div>
@@ -442,9 +419,30 @@ Loading..
 
           var id = convertToSlug(object.get('url'));
 
-          var me = {url: object.get('url'), title: object.get('title'), reads: object.get('reads'), id: id, test: "test"};
+          var me = {url: object.get('url'), title: object.get('title'), reads: object.get('reads'), id: id};
           var html    = template(me);
           $('#mostread').append(html);
+        }
+      },
+      error: function(error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+    var recent_query = new Parse.Query(Article);
+    recent_query.descending("createdAt");
+    recent_query.limit(25);
+    recent_query.find({
+      success: function(results) {
+        // Do something with the returned Parse.Object values
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+
+          var id = convertToSlug(object.get('url'));
+
+          var me = {url: object.get('url') + '#glancerecent', title: object.get('title'), reads: object.get('reads'), id: id + 'glancerecent'};
+          var html    = template(me);
+          $('#recent').append(html);
         }
       },
       error: function(error) {
@@ -538,8 +536,26 @@ function convertToSlug(Text)
 
 <script>
 
-function glancify(url){
-  alert(url);
+var lightsOn = true;
+$(document).ready(function(){
+  lightsOn = JSON.parse(localStorage.getItem('lightsOn'));
+  if (lightsOn === false){
+    lightsOn = true;
+    toggleLights();
+  }
+});
+
+function toggleLights(){
+
+  if(lightsOn){
+    $('#lightsTheme').attr('href', "{{STATIC_URL}}/css/darkTheme.css");
+    lightsOn = false;
+    localStorage.setItem('lightsOn', "false");
+  } else{
+    $('#lightsTheme').attr('href', "{{STATIC_URL}}/css/lightTheme.css");
+    lightsOn = true;
+    localStorage.setItem('lightsOn', "true");
+  }
 }
 
 </script>

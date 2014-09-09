@@ -26,12 +26,12 @@
   {# use the CDN to get bootstrap css. can not be inside compress css block #}
   {% block cdn_css %}
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="http://bootswatch.com/cyborg/bootstrap.min.css">
   {% endblock cdn_css %}
 
   {% compress css %}
   <link rel="stylesheet" href="{% static 'css/app.css' %}">
   <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
+  <link id="lightsTheme" rel="stylesheet" href="{% static 'css/lightTheme.css' %}">
   {% block css %}{% endblock %}
   {% endcompress %}
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->

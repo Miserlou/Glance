@@ -163,13 +163,13 @@ function pivot(word){
             bestLetter = 4; // fourth
             break;
         default:
-            bestLetter = 5; // fifth
+            bestLetter = 4; // fifth
     };
 
     word = decodeEntities(word);
-    var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
+    var start = '.'.repeat((4-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
     var middle = word.slice(bestLetter-1,bestLetter).replace('.', '&#8226;');
-    var end = word.slice(bestLetter, length).replace('.', '&#8226;') + '.'.repeat((11-(word.length-bestLetter)));
+    var end = word.slice(bestLetter, length).replace('.', '&#8226;') + '.'.repeat((4-(word.length-bestLetter)));
 
     var result;
     result = "<span class='glance_start'>" + start;
@@ -221,7 +221,8 @@ function glanceifyURL(url){
             body = body.trim(); // Trim trailing and leading whitespace.
             body = body.replace(/\s+/g, ' '); // Shrink long whitespaces.
 
-            var text_content = title + author + body;
+            var intro = "Article starting in 5. 4. 3. 2. 1. ";
+            var text_content = intro + title + author + body;
             text_content = text_content.replace(/\./g, '. '); // Make sure punctuation is apprpriately spaced.
             text_content = text_content.replace(/\?/g, '? ');
             text_content = text_content.replace(/\!/g, '! ');

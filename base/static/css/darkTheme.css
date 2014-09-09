@@ -1,0 +1,44 @@
+body{
+	background: #000;
+}
+
+h1, h2, h3, h4, h5{
+	color: #eee;
+}
+
+a{
+	color: #eee;
+}
+
+.guide_top, .guide_bottom{
+	color: #000;
+}
+
+.guide_top, .guide_bottom,{
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    color: #000;
+    /* 600px+; small tablet portrait */
+    font-size: 22px;
+}
+
+.notch{
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #555555;    
+    /* 600px+; small tablet portrait */
+    padding-top: 6px;
+    font-size: 16px;
+}
+
+.glance_start, .glance_end, .glance_main{
+	color: #fff;
+}
+
+.page-header{
+	border-bottom: 1px solid #333;
+}
+
+.minititle{
+	color: #555;
+}

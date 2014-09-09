@@ -1,0 +1,32 @@
+body{
+	background: #fff;
+}
+
+.guide_top, .guide_bottom{
+	color: #fff;
+}
+
+a{
+	color: #222;
+}
+
+.guide_top, .guide_bottom{
+    text-align: left;
+    font-family: 'Droid Sans Mono', sans-serif;
+    font-size: 32px;
+    color: #fff;
+}
+
+.notch{
+    text-align: center;
+    font-family: 'Droid Sans Mono', sans-serif;
+    color: #dddddd;    
+    /* 600px+; small tablet portrait */
+    margin-top: 6px;
+    padding-top: 6px;
+    font-size: 16px;
+}
+
+.glance_start, .glance_end{
+	color: #000;
+}
