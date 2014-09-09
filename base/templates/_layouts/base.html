@@ -29,8 +29,8 @@
   {% endblock cdn_css %}
 
   {% compress css %}
-  <link rel="stylesheet" href="{% static 'css/app.css' %}">
   <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
   <link id="lightsTheme" rel="stylesheet" href="{% static 'css/lightTheme.css' %}">
   {% block css %}{% endblock %}
   {% endcompress %}

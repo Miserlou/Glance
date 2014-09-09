@@ -21,8 +21,6 @@ a{
     text-align: center;
     font-family: 'Droid Sans Mono', sans-serif;
     color: #dddddd;    
-    /* 600px+; small tablet portrait */
-    margin-top: 6px;
     padding-top: 6px;
     font-size: 16px;
 }

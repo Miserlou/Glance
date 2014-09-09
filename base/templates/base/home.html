@@ -19,7 +19,7 @@ body {
 <!-- Docs page layout -->
     <div class="bs-docs-header" id="content">
       <div class="container">
-        <h1>Glance</h1>
+        <h1><a href="http://glance.wtf">Glance</a></h1>
         <p>Good reads, extremely fucking fast.</p>
 
       </div>
@@ -204,20 +204,6 @@ body {
     </div>
 
 <style>
-.bs-docs-masthead, .bs-docs-header{
-  background-image: url("https://raw.githubusercontent.com/eyy/strapboot/master/bootstrap-2.3.2/docs/assets/img/bs-docs-masthead-pattern.png"), linear-gradient(45deg, #000 0%,#666 100%);
-  color: #de0000;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
-}
-
-.bs-docs-sidebar .nav > .active > a, .bs-docs-sidebar .nav > .active:hover > a, .bs-docs-sidebar .nav > .active:focus > a{
-  color: #de0000;
-  border-left: 2px solid #de0000;
-}
-
-h1, .h1 {
-    font-size: 48px;
-}
 
 .glance_result{
 
@@ -275,7 +261,9 @@ h1, .h1 {
     font-family: 'Droid Sans Mono', sans-serif;
     /* 600px+; small tablet portrait */
     font-size: 32px;
+    pointer-events: none;
 }
+
 .pivot, .glance_pivot{
     color: #de0000;
 }
@@ -352,7 +340,7 @@ h1, .h1 {
     </div>
 </div>
 
-<div id="glance_result-{{id}}-holder"  style="display: none;" >
+<div id="glance_result-{{id}}-holder"  style="display: none;">
 
 <div class="glance_result">
 
@@ -543,6 +531,13 @@ $(document).ready(function(){
     lightsOn = true;
     toggleLights();
   }
+  var wpm = localStorage.getItem('WPM');
+  if(wpm != null){
+    $("#glance_selector option").filter(function() {
+        return $(this).text() == wpm + 'wpm'; 
+    }).prop('selected', true);
+  }
+
 });
 
 function toggleLights(){

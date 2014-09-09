@@ -6,3 +6,27 @@
    css/less/bootstrap.less file.
 
    ========================================================================== */
+
+.bs-docs-masthead, .bs-docs-header{
+  background-image: url("https://raw.githubusercontent.com/eyy/strapboot/master/bootstrap-2.3.2/docs/assets/img/bs-docs-masthead-pattern.png"), linear-gradient(45deg, #000 0%,#666 100%);
+  color: #de0000;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
+}
+
+.bs-docs-sidebar .nav > .active > a, .bs-docs-sidebar .nav > .active:hover > a, .bs-docs-sidebar .nav > .active:focus > a{
+  color: #de0000;
+  border-left: 2px solid #de0000;
+}
+
+h1, .h1 {
+    font-size: 48px;
+}
+
+h1 a{
+  color: #fff;
+}
+
+h1 a:hover{
+  color: #fff;
+  text-decoration: none;
+}

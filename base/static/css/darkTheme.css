@@ -16,10 +16,9 @@ a{
 
 .guide_top, .guide_bottom,{
     text-align: left;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Droid Sans Mono', sans-serif;
+    font-size: 32px;
     color: #000;
-    /* 600px+; small tablet portrait */
-    font-size: 22px;
 }
 
 .notch{

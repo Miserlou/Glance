@@ -19,6 +19,12 @@ function getURL(url, callback) {
 //     document.getElementById("glance_holder").style.display = "none";
 // }
 
+document.getElementById("glance_selector").addEventListener("change", function(e) {
+    clearTimeouts();
+    localStorage.setItem('WPM', document.getElementById("glance_selector").value);
+    glance();
+});
+
 // Entry point to the beef.
 // Gets the WPM and the selected text, if any.
 function glance(){
@@ -90,13 +96,17 @@ function glanceify(input, url){
     var running = true;
     var glance_timers = new Array();
 
-    document.getElementById("glance_toggle").addEventListener("click", function() {
+    document.getElementById('glance_result-' + currentSlug).addEventListener("click", function() {
+        pausePlay();
+    });
+
+    function pausePlay(){
         if(running) {
             stopglance();
         } else {
             startglance();
         }
-    });
+    }
 
     function updateValues(i) {
 
@@ -221,7 +231,7 @@ function glanceifyURL(url){
             body = body.trim(); // Trim trailing and leading whitespace.
             body = body.replace(/\s+/g, ' '); // Shrink long whitespaces.
 
-            var intro = "Article starting in 5. 4. 3. 2. 1. ";
+            var intro = "Article starting in Five. Four. Three. Two. One. ";
             var text_content = intro + title + author + body;
             text_content = text_content.replace(/\./g, '. '); // Make sure punctuation is apprpriately spaced.
             text_content = text_content.replace(/\?/g, '? ');
