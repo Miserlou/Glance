@@ -1,7 +1,6 @@
 ![Glance Header](http://i.imgur.com/ViwjlpF.png)
 
 # [Glance](http://glance.wtf)
-## Good reads, extremely fucking fast.
 
 **[Glance](http://glance.wtf)** is a news network for the discerning [speed reader](http://en.wikipedia.org/wiki/Rapid_serial_visual_presentation).
 
