@@ -30,3 +30,16 @@ h1 a:hover{
   color: #fff;
   text-decoration: none;
 }
+
+.articletitle a:hover{
+  color: #de0000;
+  text-decoration: none;
+}
+
+.bs-docs-sidebar .nav>li>a:hover, .bs-docs-sidebar .nav>li>a:focus{
+	padding-left: 19px;
+	color: #bc0000;
+	text-decoration: none;
+	background-color: transparent;
+	border-left: 1px solid #bc0000;
+}

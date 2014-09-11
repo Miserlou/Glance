@@ -198,6 +198,7 @@ function pivot(word){
 // Uses the Readability API to get the juicy content of the current page.
 function glanceifyURL(url){
 
+    clearTimeouts();
     currentSlug = convertToSlug(url);
 
     $('#glance_result-' + currentSlug + '-holder').show();
@@ -216,6 +217,8 @@ function glanceifyURL(url){
                 document.getElementById("glance_result").innerText = "Article extraction failed. Try selecting text instead.";
                 return;
             }
+
+            createOrUpdate(url, data.title);
 
             var title = '';
             if(data.title !== ""){

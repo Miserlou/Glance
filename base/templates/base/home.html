@@ -37,6 +37,21 @@ body {
 
 <div class="col-md-9" role="main">
 
+<div class="row hidden-md hidden-lg">
+<ul class="nav nav-pills">
+  <li><a href="#js-mostread">Most Read</a></li>
+  <li><a href="#js-recent">Recent</a></li>
+  <li><a href="#js-news">News</a></li>
+  <li><a href="#js-commentary">Commentary</a></li>
+  <li><a href="#js-fiction">Fiction</a></li>
+  <li><a href="#js-classics">Classics</a></li>
+  <li><a href="#js-hn">HN</a></li>
+  <li><a href="#js-truereddit">TrueReddit</a></li>
+  <li><a onclick="toggleLights(); return false;">Toggle Lights</a></li>
+</ul>
+<br />
+</div>
+
 <div class="bs-docs-section">
   <h1 id="js-mostread" class="page-header">Most Read</h1>
   <div id="mostread">
@@ -89,7 +104,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-hn" class="page-header">HN <small>rich nerds</small></h1>
+  <h1 id="js-hn" class="page-header">HN <small>rich nerd yack</small></h1>
 
   <div id="hn">
 
@@ -98,7 +113,7 @@ body {
 </div>
 
 <div class="bs-docs-section">
-  <h1 id="js-truereddit" class="page-header">TrueReddit <small><i>"Sometimes broken!"</i></small></h1>
+  <h1 id="js-truereddit" class="page-header">TrueReddit <small><i>"Sometimes broken!™"</i></small></h1>
 
   <div id="truereddit">
 
@@ -162,6 +177,10 @@ body {
   </ul>
 </li>
             </ul>
+
+            <a class="back-to-top" href="#footer">
+              About
+            </a>
 
             <a class="back-to-top" href="#top">
               Back to top
@@ -275,8 +294,12 @@ body {
 
 @media (max-width: 599px) {
 
+    h1{
+      font-size: 32px;
+    }
+
     .glance_holder{
-        width: 320
+        width: 320px;
         padding-top: 4px;
         padding-bottom: 6px;
         margin-bottom: 6px;
@@ -296,18 +319,16 @@ body {
 
     .glance_result{
         min-height: 22px;
-        font-size: 22px;
+        font-size: 28px;
         padding-top: 24px;
         padding-bottom: 24px;
     }
 
     .guide_top, .guide_bottom{
-        font-size: 12px;
+        font-size: 28px;
     }
 
     .notch{
-        margin-top: 6px;
-        padding-top: 8px;
         font-size: 12px;
     }
 
@@ -316,7 +337,7 @@ body {
     }
 
     .start, .pivot, .end, .glance_start, .glance_pivot, .glance_end{
-        font-size: 22px;
+        font-size: 28px;
     }
 
 }
@@ -328,7 +349,7 @@ body {
 
 <div id="{{id}}">
     <div class="page-header">
-      <h3 id="link-{{id}}"><a href="#" onclick="glanceifyURL('{{url}}'); return false;">{{title}}</a></h3>
+      <h3 id="link-{{id}}" class="articletitle"><a href="#" onclick="glanceifyURL('{{url}}'); return false;">{{title}}</a></h3>
     <p style="max-width: 100%; word-wrap:break-word;">
       <i class="text-muted">{{url}}</i>
     </p>
@@ -366,7 +387,7 @@ Loading..
 
 <div class="page-header" style="margin-top: 9px;">
   <p style="max-width: 100%; word-wrap:break-word;">
-    <b class="minititle">{{title}}</b><br />
+    <b class="minititle" onclick="glanceifyURL('{{url}}'); return false;">{{title}}</b><br />
     <i class="text-muted">{{url}}</i>
   </p>
 </div>
@@ -384,6 +405,35 @@ Loading..
 
 {% block post_scripts %}
 <script type="text/javascript">
+
+    function createOrUpdate(url, title){
+      var Article = Parse.Object.extend("Article");
+      var query = new Parse.Query(Article);
+      query.equalTo("url", url);
+      query.equalTo("title", title);
+      query.find({
+        success: function(results) {
+
+            // Don't have the object, create it.
+            if(results.length < 1){
+               var article = new Article();
+               article.set("url", url);
+               article.set("title", title);
+               article.set("reads", 1);
+               article.save();
+               return;
+            } else {
+               // Update object if we already have it.
+               var article = results[0];
+               article.increment("reads");
+               article.save();
+               return;
+            }
+        },
+        error: function(error) {
+        }
+      });
+    }
 
   $(document).ready(function(){
 
@@ -466,6 +516,9 @@ Loading..
                     }
                 } else {
                 }
+
+                var $body   = $(document.body)
+                $body.scrollspy('refresh');
             }
 
             //In the event that the HTTP status returned does not resolve to,
