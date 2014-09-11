@@ -1,19 +1,15 @@
+![http://i.imgur.com/ViwjlpF.png](Glance header)
 
-# The Glance Project #
+# [http://glance.wtf](Glance)
+## Good reads, extremely fucking fast.
 
-## About ##
+**[http://glance.wtf](Glance)** is a news network for the discerning [http://en.wikipedia.org/wiki/Rapid_serial_visual_presentation](speed reader).
 
-Describe your project here.
+### Sisters 
 
-## Prerequisites ##
+This project is a descendant of the [http://github.com/Miserlou/Glance-Bookmarklet](Glance Bookmarklet).
 
-- Python 2.6 or 2.7
-- pip
-- virtualenv (virtualenvwrapper is recommended for use during development)
-
-## Installation ##
-
-Fill out with installation instructions for your project.
+You may also want to see the [https://github.com/OnlyInAmerica/GlanceReader](Glance Android App).
 
 
 License
