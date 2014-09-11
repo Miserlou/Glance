@@ -1,15 +1,15 @@
-![http://i.imgur.com/ViwjlpF.png](Glance header)
+![Glance Header](http://i.imgur.com/ViwjlpF.png)
 
-# [http://glance.wtf](Glance)
+# [Glance](http://glance.wtf)
 ## Good reads, extremely fucking fast.
 
-**[http://glance.wtf](Glance)** is a news network for the discerning [http://en.wikipedia.org/wiki/Rapid_serial_visual_presentation](speed reader).
+**[Glance](http://glance.wtf)** is a news network for the discerning [speed reader](http://en.wikipedia.org/wiki/Rapid_serial_visual_presentation).
 
 ### Sisters 
 
-This project is a descendant of the [http://github.com/Miserlou/Glance-Bookmarklet](Glance Bookmarklet).
+This project is a descendant of the [Glance Bookmarklet](http://github.com/Miserlou/Glance-Bookmarklet).
 
-You may also want to see the [https://github.com/OnlyInAmerica/GlanceReader](Glance Android App).
+You may also want to see the [Glance Android App](https://github.com/OnlyInAmerica/GlanceReader).
 
 
 License
