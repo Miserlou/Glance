@@ -1,4 +1,4 @@
-![Glance Header](http://i.imgur.com/a2zwSpu.png)
+![Glance Header](http://i.imgur.com/G7jcVDq.png)
 
 # [Glance](http://glance.wtf)
 
