@@ -342,6 +342,11 @@ body {
 
 }
 
+.label-counter{
+  background-color: none;
+  color: #de0000;
+}
+
 </style>
 
 {% verbatim %}
@@ -349,15 +354,10 @@ body {
 
 <div id="{{id}}">
     <div class="page-header">
-      <h3 id="link-{{id}}" class="articletitle"><a href="#" onclick="glanceifyURL('{{url}}'); return false;">{{title}}</a></h3>
+      <h3 id="link-{{id}}" class="articletitle">{{#if reads}}<span class="label label-counter">{{reads}}</span>&nbsp;{{/if}}<a href="#" onclick="glanceifyURL('{{url}}'); return false;">{{title}}</a></h3>
     <p style="max-width: 100%; word-wrap:break-word;">
       <i class="text-muted">{{url}}</i>
     </p>
-    {{#if reads}}
-    <p class="text-muted">
-      {{reads}} glances.
-    </p>
-    {{/if}}
     </div>
 </div>
 
@@ -426,7 +426,7 @@ Loading..
                // Update object if we already have it.
                var article = results[0];
                article.increment("reads");
-               article.save();
+               article.save();d
                return;
             }
         },
