@@ -1,4 +1,5 @@
 var currentSlug = '';
+var currentId = '';
 
 function getURL(url, callback) {
     var xmlhttp = new XMLHttpRequest();
@@ -96,7 +97,7 @@ function glanceify(input, url){
     var running = true;
     var glance_timers = new Array();
 
-    document.getElementById('glance_result-' + currentSlug).addEventListener("click", function() {
+    document.getElementById('glance_result-' + currentId).addEventListener("click", function() {
         pausePlay();
     });
 
@@ -111,7 +112,7 @@ function glanceify(input, url){
     function updateValues(i) {
 
         var p = pivot(all_words[i]);
-        document.getElementById("glance_result-" + currentSlug).innerHTML = p;
+        document.getElementById("glance_result-" + currentId).innerHTML = p;
         currentWord = i;
 
     }
@@ -196,14 +197,15 @@ function pivot(word){
 
 
 // Uses the Readability API to get the juicy content of the current page.
-function glanceifyURL(url){
+function glanceifyURL(url, id){
 
     clearTimeouts();
     currentSlug = convertToSlug(url);
+    currentId = id;
 
-    $('#glance_result-' + currentSlug + '-holder').show();
-    $('#' + currentSlug).html('Loading..');
-    $('#' + currentSlug).hide();
+    $('#glance_result-' + currentId + '-holder').show();
+    $('#' + currentId).html('Loading..');
+    $('#' + currentId).hide();
 
     var diffbot_token = '2efef432c72b5a923408e04353c39a7c';
 

@@ -41,3 +41,8 @@ a{
 .minititle{
 	color: #555;
 }
+
+#guniologo{
+  -webkit-filter: invert(100%);  
+  width: 50%;
+}

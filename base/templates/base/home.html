@@ -216,6 +216,14 @@ body {
 
           </p>
 
+          <p class="back-to-top">
+          </p>
+
+          <p class="back-to-top">
+            <a href="https://gun.io/" target="_blank">
+              <img src="https://gun.io/static/assets/img/gunio-logo.png" id="guniologo">
+            </a>
+          </p>
 
           </div>
         </div>
@@ -354,7 +362,7 @@ body {
 
 <div id="{{id}}">
     <div class="page-header">
-      <h3 id="link-{{id}}" class="articletitle">{{#if reads}}<span class="label label-counter">{{reads}}</span>&nbsp;{{/if}}<a href="#" onclick="glanceifyURL('{{url}}'); return false;">{{title}}</a></h3>
+      <h3 id="link-{{id}}" class="articletitle">{{#if reads}}<span class="label label-counter">{{reads}}</span>&nbsp;{{/if}}<a href="#" onclick="glanceifyURL('{{url}}', '{{id}}'); return false;">{{title}}</a></h3>
     <p style="max-width: 100%; word-wrap:break-word;">
       <i class="text-muted">{{url}}</i>
     </p>
@@ -387,7 +395,7 @@ Loading..
 
 <div class="page-header" style="margin-top: 9px;">
   <p style="max-width: 100%; word-wrap:break-word;">
-    <b class="minititle" onclick="glanceifyURL('{{url}}'); return false;">{{title}}</b><br />
+    <b class="minititle" onclick="glanceifyURL('{{url}}', '{{id}}'); return false;">{{title}}</b><br />
     <i class="text-muted">{{url}}</i>
   </p>
 </div>
@@ -426,7 +434,7 @@ Loading..
                // Update object if we already have it.
                var article = results[0];
                article.increment("reads");
-               article.save();d
+               article.save();
                return;
             }
         },
@@ -478,7 +486,7 @@ Loading..
 
           var id = convertToSlug(object.get('url'));
 
-          var me = {url: object.get('url') + '#glancerecent', title: object.get('title'), reads: object.get('reads'), id: id + 'glancerecent'};
+          var me = {url: object.get('url'), title: object.get('title'), reads: object.get('reads'), id: id + 'glancerecent'};
           var html    = template(me);
           $('#recent').append(html);
         }
